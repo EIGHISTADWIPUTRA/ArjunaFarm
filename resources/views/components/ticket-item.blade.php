@@ -1,6 +1,6 @@
-@props(['title', 'subtitle' => null, 'price'])
+@props(['title', 'subtitle' => null, 'price', 'id' => null])
 
-<div class="ticket-item">
+<div class="ticket-item" @if($id) data-id="{{ $id }}" @endif>
     <div class="ticket-title">{{ $title }}</div>
     @if ($subtitle)
         <div class="ticket-subtitle">{{ $subtitle }}</div>

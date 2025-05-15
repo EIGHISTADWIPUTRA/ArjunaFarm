@@ -5,10 +5,10 @@
                 {{ __('Detail Paket: ') . $package->name }}
             </h2>
             <div class="flex space-x-2">
-                <a href="{{ route('packages.edit', $package) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
+                <a href="{{ route('admin.packages.edit', $package) }}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
                     Edit Paket
                 </a>
-                <a href="{{ route('packages.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
+                <a href="{{ route('admin.packages.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
                     Kembali
                 </a>
             </div>

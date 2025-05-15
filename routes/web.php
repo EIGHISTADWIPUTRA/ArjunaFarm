@@ -37,7 +37,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     })->name('dashboard');
 
     // Route untuk CRUD paket
-    Route::resource('packages', App\Http\Controllers\Admin\PackageController::class);
+    Route::resource('admin/packages', App\Http\Controllers\Admin\PackageController::class)->names('admin.packages');
 
     // Route untuk CRUD pesanan
     Route::resource('orders', App\Http\Controllers\Admin\OrderController::class);
@@ -52,9 +52,7 @@ Route::get('/packages', [PackageController::class, 'index'])->name('packages.ind
 Route::get('/packages/{package}', [PackageController::class, 'show'])->name('packages.show');
 
 // Tiket route
-Route::get('/tiket', function() {
-    return view('tiket');
-})->name('tiket');
+Route::get('/tiket', [TicketController::class, 'index'])->name('tiket');
 
 // Order process routes
 Route::get('/booking', [OrderController::class, 'create'])->name('orders.create');

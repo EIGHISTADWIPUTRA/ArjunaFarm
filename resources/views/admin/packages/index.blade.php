@@ -4,7 +4,7 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Kelola Paket Wisata') }}
             </h2>
-            <a href="{{ route('packages.create') }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+            <a href="{{ route('admin.packages.create') }}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
                 Tambah Paket Baru
             </a>
         </div>
@@ -92,13 +92,13 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                             <div class="flex space-x-2">
-                                                <a href="{{ route('packages.show', $package) }}" class="text-indigo-600 hover:text-indigo-900">
+                                                <a href="{{ route('admin.packages.show', $package) }}" class="text-indigo-600 hover:text-indigo-900">
                                                     Detail
                                                 </a>
-                                                <a href="{{ route('packages.edit', $package) }}" class="text-yellow-600 hover:text-yellow-900">
+                                                <a href="{{ route('admin.packages.edit', $package) }}" class="text-yellow-600 hover:text-yellow-900">
                                                     Edit
                                                 </a>
-                                                <form action="{{ route('packages.destroy', $package) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus paket ini?');">
+                                                <form action="{{ route('admin.packages.destroy', $package) }}" method="POST" class="inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus paket ini?');">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="text-red-600 hover:text-red-900">

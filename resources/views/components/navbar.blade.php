@@ -12,15 +12,15 @@
     <!-- Navigation Links -->
     <div class="flex items-center space-x-16 hidden lg:flex">
         <div class="flex items-center space-x-8">
-            <a href="#" class="text-[#707070] hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
-            <a href="#" class="text-[#707070] hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
-            <a href="#" class="text-[#707070] hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
+            <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
+            <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
+            <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
         </div>
         @auth
             <!-- User Profile Container -->
             <div class="group w-[130px] bg-transparent">
                 <!-- User Profile Trigger -->
-                <div class="flex items-center justify-between text-[#707070] hover:text-white transition-all duration-300 ease-in-out cursor-pointer">
+                <div class="flex items-center justify-between text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out cursor-pointer">
                     {{ Auth::user()->name }} 
                     <svg class="inline w-4 h-4 ml-1" fill="currentColor" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-5 7-5-7h10"/>
@@ -29,7 +29,7 @@
 
                 <!-- Profile Dropdown -->
                 <div class="absolute hidden group-hover:flex flex-col w-[165px] top-14 right-11 p-4 pb-2 rounded-md bg-white dark:bg-gray-800 z-0">
-                    <a href="{{ route('dashboard') }}" class="w-full py-2 text-[#707070] hover:text-white transition-all duration-300 ease-in-out">
+                    <a href="{{ route('dashboard') }}" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">
                         Dashboard
                     </a>
                     <form method="POST" action="{{ route('logout') }}" class="w-full py-2">
@@ -51,7 +51,7 @@
 
     <!-- Hamburger Menu -->
     <div class="flex items-center lg:hidden">
-        <button id="mobile-menu-button" class="p-2 text-[#707070] hover:text-white outline-none transition-all duration-300 ease-in-out">
+        <button id="mobile-menu-button" class="p-2 text-[#707070] hover:text-black dark:hover:text-white outline-none transition-all duration-300 ease-in-out">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
             </svg>
@@ -61,13 +61,13 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden lg:hidden absolute w-[165px] top-[65px] right-8 p-4 rounded-md bg-white dark:bg-gray-800">
         <div class="flex flex-col items-center">
-            <a href="#" class="w-full py-2 text-[#707070] hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
-            <a href="#" class="w-full py-2 text-[#707070] hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
-            <a href="#" class="w-full py-2 text-[#707070] hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
+            <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
+            <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
+            <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
             <hr class="my-2 border-[#707070] w-full">
             @auth
                 <!-- User Profile -->
-                <a href="{{ route('dashboard') }}" class="w-full py-2 text-[#707070] hover:text-white transition-all duration-300 ease-in-out">
+                <a href="{{ route('dashboard') }}" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">
                     Dashboard
                 </a>
                 <form method="POST" action="{{ route('logout') }}" class="w-full py-2">
@@ -90,7 +90,6 @@
     // JavaScript for changing navbar background color on scroll
     document.addEventListener('DOMContentLoaded', function () {
         const nav = document.querySelector('nav.bg-transparent');
-        const navText = document.querySelectorAll('nav.bg-transparent a.text-\\[\\#707070\\]');
         if (!nav) return;
         
         const navHeight = nav.offsetHeight;
@@ -99,17 +98,9 @@
             if (window.scrollY >= navHeight) {
                 nav.classList.remove('bg-transparent');
                 nav.classList.add('bg-white', 'dark:bg-gray-800', 'shadow-lg');
-                navText.forEach(function(a) {
-                    a.classList.remove('hover:text-white', 'dark:hover:text-black');
-                    a.classList.add('hover:text-black', 'dark:hover:text-white');
-                });
             } else {
                 nav.classList.remove('bg-white', 'dark:bg-gray-800', 'shadow-lg');
                 nav.classList.add('bg-transparent');
-                navText.forEach(function(a) {
-                    a.classList.remove('hover:text-black', 'dark:hover:text-white');
-                    a.classList.add('hover:text-white', 'dark:hover:text-white');
-                });
             }
         });
     });

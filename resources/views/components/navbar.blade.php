@@ -10,17 +10,20 @@
     </div>
 
     <!-- Navigation Links -->
-    <div class="flex items-center space-x-16 hidden lg:flex">
+    <div class="flex items-center gap-8 hidden lg:flex">
         <div class="flex items-center space-x-8">
             <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
             <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
             <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
         </div>
         @auth
+            <!-- Vertical Line Separator -->
+            <div class="h-10 border-l border-[#707070]"></div>
+
             <!-- User Profile Container -->
             <div class="group w-[130px] bg-transparent">
                 <!-- User Profile Trigger -->
-                <div class="flex items-center justify-between text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out cursor-pointer">
+                <div class="flex items-center justify-between text-[#707070] hover:text-black dark:hover:text-white group-hover:text-black dark:group-hover:text-white transition-all duration-300 ease-in-out cursor-pointer">
                     {{ Auth::user()->name }} 
                     <svg class="inline w-4 h-4 ml-1" fill="currentColor" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-5 7-5-7h10"/>
@@ -43,7 +46,7 @@
 
         @else
             <!-- Login Button -->
-            <x-button href="{{ route('register') }}" xw="w-[130px]" xh="h-[45px]">
+            <x-button href="{{ route('register') }}" xw="w-[130px]" xh="h-[45px]" class="ml-8">
                 Masuk
             </x-button>
         @endauth

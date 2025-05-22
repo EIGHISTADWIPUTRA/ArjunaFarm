@@ -1,4 +1,6 @@
-<nav class="flex justify-between py-2 px-8 lg:py-4 lg:px-16 fixed w-full z-10 transition-all duration-300 ease-in-out bg-transparent">
+@props(['transparent' => true])
+
+<nav class="flex justify-between py-2 px-8 lg:py-4 lg:px-16 fixed w-full z-10 transition-all duration-300 ease-in-out {{ $transparent ? 'bg-transparent' : 'bg-white dark:bg-gray-800 shadow-lg' }}">
     <!-- Logo -->
     <div class="block lg:hidden"></div>
     <div class="flex items-center">
@@ -89,6 +91,7 @@
     </div>
 </nav>
 
+@if($transparent)
 <script>
     // JavaScript for changing navbar background color on scroll
     document.addEventListener('DOMContentLoaded', function () {
@@ -107,7 +110,10 @@
             }
         });
     });
+</script>
+@endif
 
+<script>
     // JavaScript for mobile menu toggle
     document.getElementById('mobile-menu-button').addEventListener('click', function() {
         const mobileMenu = document.getElementById('mobile-menu');

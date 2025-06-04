@@ -1,3 +1,3 @@
-<x-app-layout>
+<x-main-layout>
     <section class="h-screen"></section>
-</x-app-layout>
+</x-main-layout>

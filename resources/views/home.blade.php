@@ -6,10 +6,16 @@
         <div class="absolute inset-0 flex items-center justify-center">
             <x-product-card class="w-[250px] sm:w-[350px] md:w-[500px] lg:w-[650px] font-bold gap-4">
                 Cari Tanggal Kunjungan
-                <x-text-input></x-text-input>
-                <x-button href="#" xw="w-full" xh="h-8" rounded="rounded-md" xtxt="text-sm text-white">
-                    Cari Tiket
-                </x-button>
+                <form action="{{ route('ticket') }}" class="flex flex-col gap-4">
+                    <x-input-form class="font-normal"
+                        name="date" type="date"
+                        placeholder="Pilih Tanggal Kunjungan"
+                        required
+                    />
+                    <x-button type="submit" xw="w-full" xh="h-8" rounded="rounded-md" xtxt="text-sm text-white">
+                        Cari Tiket
+                    </x-button>
+                </form>
             </x-product-card>
         </div>
     </section>

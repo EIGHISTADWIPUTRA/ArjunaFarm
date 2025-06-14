@@ -1,6 +1,6 @@
 @props([
     'xp' => 'p-4',
-    'rounded' => 'rounded-lg',
+    'rounded' => 'rounded-2xl',
 ])
 
 <div {{ $attributes->merge(['class' =>

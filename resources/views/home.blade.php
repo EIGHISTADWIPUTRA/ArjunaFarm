@@ -123,7 +123,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <a>
                 <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/berkuda.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-lg">
+                    <img src="{{ asset('/images/berkuda.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
                     <div class="flex flex-col p-4 gap-2">
                         <h2 class="text-xl font-bold">Berkuda</h2>
                         <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Nikmati pengalaman berkuda mengelilingi padang rumput yang indah.</p>
@@ -133,7 +133,7 @@
             </a>
             <a>
                 <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/metik.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-lg">
+                    <img src="{{ asset('/images/metik.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
                     <div class="flex flex-col p-4 gap-2">
                         <h2 class="text-xl font-bold">Memetik Buah</h2>
                         <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Pengalaman memetik buah segar langsung dari kebun.</p>
@@ -143,7 +143,7 @@
             </a>
             <a>
                 <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/feeding.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-lg">
+                    <img src="{{ asset('/images/feeding.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
                     <div class="flex flex-col p-4 gap-2">
                         <h2 class="text-xl font-bold">Feeding Ternak</h2>
                         <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Berinteraksi dan memberi makan ternak dengan pendampingan.</p>
@@ -153,7 +153,7 @@
             </a>
             <a>
                 <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/berkuda.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-lg">
+                    <img src="{{ asset('/images/berkuda.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
                     <div class="flex flex-col p-4 gap-2">
                         <h2 class="text-xl font-bold">Berkuda</h2>
                         <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Nikmati pengalaman berkuda mengelilingi padang rumput yang indah.</p>
@@ -163,7 +163,7 @@
             </a>
             <a>
                 <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/metik.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-lg">
+                    <img src="{{ asset('/images/metik.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
                     <div class="flex flex-col p-4 gap-2">
                         <h2 class="text-xl font-bold">Memetik Buah</h2>
                         <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Pengalaman memetik buah segar langsung dari kebun.</p>
@@ -173,7 +173,7 @@
             </a>
             <a>
                 <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/feeding.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-lg">
+                    <img src="{{ asset('/images/feeding.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
                     <div class="flex flex-col p-4 gap-2">
                         <h2 class="text-xl font-bold">Feeding Ternak</h2>
                         <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Berinteraksi dan memberi makan ternak dengan pendampingan.</p>
@@ -183,7 +183,7 @@
             </a>
             <a>
                 <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/berkuda.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-lg">
+                    <img src="{{ asset('/images/berkuda.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
                     <div class="flex flex-col p-4 gap-2">
                         <h2 class="text-xl font-bold">Berkuda</h2>
                         <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Nikmati pengalaman berkuda mengelilingi padang rumput yang indah.</p>
@@ -193,7 +193,7 @@
             </a>
             <a>
                 <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/metik.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-lg">
+                    <img src="{{ asset('/images/metik.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
                     <div class="flex flex-col p-4 gap-2">
                         <h2 class="text-xl font-bold">Memetik Buah</h2>
                         <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Pengalaman memetik buah segar langsung dari kebun.</p>

@@ -20,7 +20,6 @@ class PaymentController extends Controller
 
     public function createTransaction(Request $request)
     {
-        print_r($request->all());
         // Create a transaction
         $params = [
             'transaction_details' => [
@@ -28,7 +27,8 @@ class PaymentController extends Controller
                 'gross_amount' => $request->amount,
             ],
             'customer_details' => [
-                'name' => $request->name,
+                'first_name' => collect(explode(' ', $request->name))->slice(0, -1)->implode(' ') ?: $request->name,
+                'last_name' => str_word_count($request->name) > 1 ? collect(explode(' ', $request->name))->last() : '',
                 'email' => $request->email,
                 'phone' => $request->phone,
             ],
@@ -36,7 +36,7 @@ class PaymentController extends Controller
 
         $snapToken = Snap::getSnapToken($params);
 
-        return view('pay', [
+        return view('invoice', [
             'snapToken' => $snapToken,
         ]);
     }

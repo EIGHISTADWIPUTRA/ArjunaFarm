@@ -57,7 +57,7 @@
                 <x-button href="#" xw="w-full" xh="h-fit" xpy="py-2" xtxt="text-sm text-white">
                     Pesan Tiket
                 </x-button>
-                <x-button href="wa.me/6282119909719" xw="w-full" xh="h-fit" xpy="py-2" xtxt="text-sm text-white" class="bg-secondary">
+                <x-button href="https://wa.me/6282119909719" xw="w-full" xh="h-fit" xpy="py-2" xtxt="text-sm text-white" class="bg-secondary">
                     Hubungi Kami
                 </x-button>
             </div>

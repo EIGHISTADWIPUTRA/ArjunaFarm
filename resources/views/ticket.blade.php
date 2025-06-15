@@ -2,7 +2,21 @@
     <h1 class="text-xl font-bold mb-4 text-gray-900 dark:text-white">
         Informasi Reservasi
     </h1>
-    <div class="flex w-full gap-8">
+    <div class="flex w-full gap-8"
+        x-data="{
+            showModal: false,
+            ...summaryHandler(),
+
+            validateForm() {
+                const form = document.getElementById('userform');
+
+                if (!form.reportValidity()) return;
+
+                this.showModal = true;
+            }
+        }"
+        @update-summary.window="handleUpdate($event)"
+    >
         <div class="flex flex-col w-2/3 bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-md gap-4">
             <form action="{{ route('ticket') }}" class="flex gap-4 items-end">
                 <x-input-form
@@ -18,9 +32,7 @@
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
                 Pilihan Kegiatan
             </h2>
-            <div class="flex flex-col gap-2"
-                x-data="summaryHandler()" @update-summary.window="handleUpdate($event)"
-            >
+            <div class="flex flex-col gap-2">
                 <x-cart-card 
                     name="Berkuda"
                     description="Nikmati pengalaman berkuda mengelilingi padang rumput yang indah."
@@ -41,9 +53,7 @@
 
         <div class="flex flex-col w-1/3 h-fit bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-md gap-4">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Detail Pengunjung</h2>
-            <form action="{{ route('payment.create') }}" method="POST" class="flex flex-col gap-2"
-                x-data="summaryHandler()" @update-summary.window="handleUpdate($event)"
-            >
+            <form id="userform" action="{{ route('payment.create') }}" method="POST" class="flex flex-col gap-2">
                 @csrf
                 <x-input-form
                     name="name" type="text"
@@ -81,12 +91,48 @@
                         Saya setuju dengan <a href="#" class="text-primary hover:underline">syarat dan ketentuan</a>
                     </label>
                 </div>
-                <x-button type="submit" class="w-full h-12 bg-primary text-white rounded-lg mt-2">
+                <button 
+                    type="button" 
+                    :class="['flex items-center justify-center w-full h-12 bg-primary font-bold text-white rounded-lg mt-2', total === 0 ? 'opacity-50' : '']"
+                    :disabled="total === 0"
+                    @click="validateForm()"
+                >
                     Pesan Tiket
-                </x-button>
+                </button>
             </form>
         </div>
+    
+        <!-- Confirmation Modal -->
+        <div 
+            x-show="showModal"
+            x-cloak
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40"
+        >
+            <x-product-card class="max-w-md">
+                <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Konfirmasi Pemesanan</h3>
+                <p class="mb-4 text-gray-700 dark:text-gray-300">
+                    Setelah mengirimkan pesanan, data tidak dapat diubah. Apakah Anda yakin ingin melanjutkan?
+                </p>
+                <div class="flex justify-end gap-2">
+                    <button 
+                        type="button"
+                        class="px-4 py-2 rounded bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+                        @click="showModal = false"
+                    >Batal</button>
+                    <button 
+                        type="button"
+                        class="px-4 py-2 rounded bg-primary text-white"
+                        @click="
+                            showModal = false;
+                            document.getElementById('userform').submit();
+                        "
+                    >Ya, Pesan Tiket</button>
+                </div>
+            </x-product-card>
+        </div>
+        <input type="hidden" x-model="showModal" />
     </div>
+
     <script>
         function summaryHandler() {
             return {

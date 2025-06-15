@@ -12,46 +12,10 @@
     </div>
 
     <!-- Navigation Links -->
-    <div class="flex items-center gap-8 hidden lg:flex">
-        <div class="flex items-center space-x-8">
-            <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
-            <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
-            <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
-        </div>
-        @auth
-            <!-- Vertical Line Separator -->
-            <div class="h-10 border-l border-[#707070]"></div>
-
-            <!-- User Profile Container -->
-            <div class="group w-[130px] bg-transparent">
-                <!-- User Profile Trigger -->
-                <div class="flex items-center justify-between text-[#707070] hover:text-black dark:hover:text-white group-hover:text-black dark:group-hover:text-white transition-all duration-300 ease-in-out cursor-pointer">
-                    {{ Auth::user()->name }} 
-                    <svg class="inline w-4 h-4 ml-1" fill="currentColor" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-5 7-5-7h10"/>
-                    </svg>
-                </div>
-
-                <!-- Profile Dropdown -->
-                <div class="absolute hidden group-hover:flex flex-col w-[165px] top-14 right-11 p-4 pb-2 rounded-md bg-white dark:bg-gray-800 z-0">
-                    <a href="{{ route('dashboard') }}" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">
-                        Dashboard
-                    </a>
-                    <form method="POST" action="{{ route('logout') }}" class="w-full py-2">
-                        @csrf
-                        <a onclick="event.preventDefault(); this.closest('form').submit();" href="{{ route('logout') }}" class="text-[#700000] hover:text-[#FF0000] transition-all duration-300 ease-in-out block">
-                            {{ __('Log Out') }}
-                        </a>
-                    </form>
-                </div>
-            </div>
-
-        @else
-            <!-- Login Button -->
-            <x-button href="{{ route('register') }}" xw="w-[130px]" xh="h-[45px]" class="ml-8">
-                Masuk
-            </x-button>
-        @endauth
+    <div class="flex items-center space-x-8 hidden lg:flex">
+        <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
+        <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
+        <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
     </div>
 
     <!-- Hamburger Menu -->
@@ -64,30 +28,10 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden absolute w-[165px] top-[65px] right-8 p-4 rounded-md bg-white dark:bg-gray-800">
-        <div class="flex flex-col items-center">
-            <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
-            <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
-            <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
-            <hr class="my-2 border-[#707070] w-full">
-            @auth
-                <!-- User Profile -->
-                <a href="{{ route('dashboard') }}" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">
-                    Dashboard
-                </a>
-                <form method="POST" action="{{ route('logout') }}" class="w-full py-2">
-                    @csrf
-                    <a onclick="event.preventDefault(); this.closest('form').submit();" href="route('logout')" class="text-[#700000] hover:text-[#FF0000] transition-all duration-300 ease-in-out">
-                        {{ __('Log Out') }}
-                    </a>
-                </form>
-            @else
-                <!-- Login Button -->
-                <x-button href="{{ route('register') }}" xw="w-[130px]" xh="h-[45px]" class="mt-2">
-                    Masuk
-                </x-button>
-            @endauth
-        </div>
+    <div id="mobile-menu" class="flex flex-col items-center hidden lg:hidden absolute w-[165px] top-[65px] right-8 p-4 rounded-md bg-white dark:bg-gray-800">
+        <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
+        <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
+        <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
     </div>
 </nav>
 

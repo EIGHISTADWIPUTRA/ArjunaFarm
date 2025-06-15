@@ -1,4 +1,4 @@
-<footer class="relative flex justify-between bg-[#635440] text-secondary px-32 py-16 rounded-t-[4rem] overflow-hidden">
+<footer class="relative flex justify-between bg-[#635440] text-secondary px-16 lg:px-32 py-8 md:py-16 rounded-t-[4rem] overflow-hidden">
     <!-- Background -->
     <div class="absolute top-[-2rem] right-[-6rem] bottom-0 z-0">
         <img src="{{ asset('/images/footer.png') }}" alt="Footer Background" class="object-fit size-96">
@@ -32,10 +32,13 @@
 
     <!-- Links -->
      <div class="flex gap-20 z-10">
-        <ul class="flex flex-col gap-8 text-lg font-semibold">
+        <ul class="flex flex-col gap-4 lg:gap-8 text-lg font-semibold hidden md:flex">
             <li><a href="#">Aktivitas</a></li>
             <li><a href="#">Reservasi</a></li>
             <li><a href="#">Tentang</a></li>
+            <li class="block lg:hidden">
+                <a href="https://wa.me/6282119909719">Hubungi Kami</a>
+            </li>
         </ul>
         <div class="flex flex-col gap-4 hidden lg:flex">
             <x-button href="https://wa.me/6282119909719" xpx="px-6" class="bg-transparent border-2 border-secondary text-secondary">

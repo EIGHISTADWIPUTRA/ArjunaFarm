@@ -127,86 +127,18 @@
     <section id="content" class="px-16 py-8 min-h-screen">
         <h1 class="text-3xl font-bold text-center mb-8 text-black dark:text-white">Produk Kami</h1>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <a>
-                <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/berkuda.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
-                    <div class="flex flex-col p-4 gap-2">
-                        <h2 class="text-xl font-bold">Berkuda</h2>
-                        <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Nikmati pengalaman berkuda mengelilingi padang rumput yang indah.</p>
-                        <h2 class="text-l font-bold">Rp75.000</h2>
-                    </div>
-                </x-product-card>
-            </a>
-            <a>
-                <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/metik.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
-                    <div class="flex flex-col p-4 gap-2">
-                        <h2 class="text-xl font-bold">Memetik Buah</h2>
-                        <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Pengalaman memetik buah segar langsung dari kebun.</p>
-                        <h2 class="text-l font-bold">Rp50.000</h2>
-                    </div>
-                </x-product-card>
-            </a>
-            <a>
-                <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/feeding.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
-                    <div class="flex flex-col p-4 gap-2">
-                        <h2 class="text-xl font-bold">Feeding Ternak</h2>
-                        <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Berinteraksi dan memberi makan ternak dengan pendampingan.</p>
-                        <h2 class="text-l font-bold">Rp45.000</h2>
-                    </div>
-                </x-product-card>
-            </a>
-            <a>
-                <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/berkuda.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
-                    <div class="flex flex-col p-4 gap-2">
-                        <h2 class="text-xl font-bold">Berkuda</h2>
-                        <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Nikmati pengalaman berkuda mengelilingi padang rumput yang indah.</p>
-                        <h2 class="text-l font-bold">Rp75.000</h2>
-                    </div>
-                </x-product-card>
-            </a>
-            <a>
-                <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/metik.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
-                    <div class="flex flex-col p-4 gap-2">
-                        <h2 class="text-xl font-bold">Memetik Buah</h2>
-                        <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Pengalaman memetik buah segar langsung dari kebun.</p>
-                        <h2 class="text-l font-bold">Rp50.000</h2>
-                    </div>
-                </x-product-card>
-            </a>
-            <a>
-                <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/feeding.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
-                    <div class="flex flex-col p-4 gap-2">
-                        <h2 class="text-xl font-bold">Feeding Ternak</h2>
-                        <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Berinteraksi dan memberi makan ternak dengan pendampingan.</p>
-                        <h2 class="text-l font-bold">Rp45.000</h2>
-                    </div>
-                </x-product-card>
-            </a>
-            <a>
-                <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/berkuda.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
-                    <div class="flex flex-col p-4 gap-2">
-                        <h2 class="text-xl font-bold">Berkuda</h2>
-                        <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Nikmati pengalaman berkuda mengelilingi padang rumput yang indah.</p>
-                        <h2 class="text-l font-bold">Rp75.000</h2>
-                    </div>
-                </x-product-card>
-            </a>
-            <a>
-                <x-product-card xp="" class="w-full h-full">
-                    <img src="{{ asset('/images/metik.jpg') }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
-                    <div class="flex flex-col p-4 gap-2">
-                        <h2 class="text-xl font-bold">Memetik Buah</h2>
-                        <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">Pengalaman memetik buah segar langsung dari kebun.</p>
-                        <h2 class="text-l font-bold">Rp50.000</h2>
-                    </div>
-                </x-product-card>
-            </a>
+            @foreach ($products as $product)
+                <a>
+                    <x-product-card xp="" class="w-full h-full">
+                        <img src="{{ asset('images/' . $product->image) }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
+                        <div class="flex flex-col p-4 gap-2">
+                            <h2 class="text-xl font-bold">{{ $product->name }}</h2>
+                            <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">{{ $product->description }}</p>
+                            <h2 class="text-l font-bold">Rp{{ number_format($product->price, 0, ',', '.') }}</h2>
+                        </div>
+                    </x-product-card>
+                </a>
+            @endforeach
         </div>
     </section>
     <section id="location" class="flex flex-col md:flex-row lg:flex-row p-16 pt-8 gap-16">

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('email');
             $table->enum('status', ['pending', 'completed', 'cancelled'])->default('pending');
             $table->decimal('total_amount', 10, 2);
+            $table->string('token')->nullable();
+            $table->string('secure_key')->nullable();
             $table->timestamps();
         });
     }

@@ -15,5 +15,7 @@ class Transaction extends Model
         'email',
         'status',
         'total_amount',
+        'token',
+        'secure_key',
     ];
 }

@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Create an admin user
-        \App\Models\User::factory()->create([
+        User::factory()->create([
             'name' => 'Arjuna Farm',
             'email' => 'admin@mail.com',
             'password' => bcrypt('arjunafarm'), // Use bcrypt for password hashing

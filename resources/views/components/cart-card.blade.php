@@ -1,4 +1,5 @@
 @props([
+    'id' => 0,
     'name' => '',
     'description' => '',
     'price' => 0,  
@@ -6,11 +7,12 @@
 
 <div class="cart-card flex flex-col w-full p-2.5 border border-gray-500 rounded-md gap-1.5"
     x-data="{
+        id: {{ $id }},
         quantity: 0,
         price: {{ $price }},
         updateTotal() {
             $name = '{{ $name }}'.toLowerCase().replace(/\s+/g, '_');
-            $dispatch('update-summary', { name: $name, price: this.price, quantity: this.quantity })
+            $dispatch('update-summary', { id: this.id, price: this.price, quantity: this.quantity })
         }
     }"
     x-init="updateTotal()"

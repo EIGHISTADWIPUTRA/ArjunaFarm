@@ -22,7 +22,7 @@
                 <x-input-form
                     name="date" type="date"
                     label="Tanggal Kunjungan"
-                    value="{{ isset($date) ? $date : '' }}"
+                    value="{{ $date? $date : '' }}"
                     required
                 />
                 <button type="submit" class="h-fit text-nowrap px-3 py-2 bg-primary text-white border border-primary rounded-md">
@@ -33,21 +33,14 @@
                 Pilihan Kegiatan
             </h2>
             <div class="flex flex-col gap-2">
-                <x-cart-card 
-                    name="Berkuda"
-                    description="Nikmati pengalaman berkuda mengelilingi padang rumput yang indah."
-                    price="75000"
-                />  
-                <x-cart-card 
-                    name="Memetik Buah"
-                    description="Pengalaman memetik buah segar langsung dari kebun."
-                    price="50000"
-                />
-                <x-cart-card 
-                    name="Feeding Ternak"
-                    description="Berinteraksi dan memberi makan ternak dengan pendampingan."
-                    price="45000"
-                />
+                @foreach ($products as $product)
+                    <x-cart-card 
+                        :id="$product->id"
+                        :name="$product->name"
+                        :description="$product->description"
+                        :price="$product->price"
+                    />
+                @endforeach
             </div>
         </div>
 
@@ -55,6 +48,7 @@
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Detail Pengunjung</h2>
             <form id="userform" action="{{ route('payment.create') }}" method="POST" class="flex flex-col gap-2">
                 @csrf
+                <input type="hidden" name="date" value="{{ $date }}">
                 <x-input-form
                     name="name" type="text"
                     label="Nama Lengkap"
@@ -72,6 +66,7 @@
                 />
                 <hr>
                 <div class="flex items-center justify-between">
+                    <input type="hidden" name="items" :value="JSON.stringify(items)">
                     <h2 class="text-sm text-gray-900 dark:text-white">Subtotal</h2>
                     <span x-text="format(subtotal)" class="text-sm text-gray-900 dark:text-white"></span>
                 </div>
@@ -143,15 +138,15 @@
 
                 handleUpdate(e) {
                     console.log('Update received:', e.detail);
-                    const { name, price, quantity } = e.detail;
+                    const { id, price, quantity } = e.detail;
 
                     // Update or add item
                     console.log(this.items);
-                    const index = this.items.findIndex(i => i.name === name);
+                    const index = this.items.findIndex(i => i.id === id);
                     if (index >= 0) {
                         this.items[index].quantity = quantity;
                     } else {
-                        this.items.push({ name, price, quantity });
+                        this.items.push({ id, price, quantity });
                     }
 
                     this.calculateTotal();

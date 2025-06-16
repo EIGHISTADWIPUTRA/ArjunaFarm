@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -17,12 +18,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::resource('/', HomeController::class);
 
-Route::get('/ticket', function (Request $request) {
-    $date = $request->query('date');
-    return view('ticket', compact('date'));
-})->name('ticket');
+Route::get('/ticket', [TicketController::class, 'showTickets'])->name('ticket');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('/create-transaction', [PaymentController::class, 'createTransaction'])->name('payment.create');
+Route::post('/invoice', [PaymentController::class, 'createTransaction'])->name('payment.create');
 Route::post('/transaction-result', [PaymentController::class, 'handleResult'])->name('payment.result');
 Route::post('/notification-handler', [PaymentController::class, 'notificationHandler'])->name('payment.notification');
 

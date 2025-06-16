@@ -36,4 +36,6 @@ Route::post('/invoice', [PaymentController::class, 'createTransaction'])->name('
 Route::post('/transaction-result', [PaymentController::class, 'handleResult'])->name('payment.result');
 Route::post('/notification-handler', [PaymentController::class, 'notificationHandler'])->name('payment.notification');
 
+Route::get('/invoice/{id}', [PaymentController::class, 'showInvoice'])->name('invoice.show');
+
 require __DIR__.'/auth.php';

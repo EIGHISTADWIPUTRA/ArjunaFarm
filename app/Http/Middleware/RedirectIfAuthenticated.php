@@ -21,6 +21,10 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                // Jangan redirect jika akses ke /admin (Filament)
+                if ($request->is('admin') || $request->is('admin/*')) {
+                    return $next($request);
+                }
                 return redirect(RouteServiceProvider::HOME);
             }
         }

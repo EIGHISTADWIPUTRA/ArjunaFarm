@@ -16,7 +16,7 @@
         <div class="flex items-center space-x-8">
             <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
             <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
-            <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
+            <a href="{{ url('/tentang') }}" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
         </div>
         @auth
             <!-- Vertical Line Separator -->
@@ -62,7 +62,7 @@
         <div class="flex flex-col items-center">
             <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
             <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
-            <a href="#" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
+            <a href="{{ url('/tentang') }}" class="w-full py-2 text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
             @auth
                 <hr class="my-2 border-[#707070] w-full">
                 

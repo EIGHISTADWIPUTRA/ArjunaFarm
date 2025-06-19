@@ -38,4 +38,6 @@ Route::post('/notification-handler', [PaymentController::class, 'notificationHan
 
 Route::get('/invoice/{id}', [PaymentController::class, 'showInvoice'])->name('invoice.show');
 
+Route::view('/tentang', 'tentang')->name('tentang');
+
 require __DIR__.'/auth.php';

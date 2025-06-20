@@ -45,7 +45,7 @@ class ProdukTerjualWidget extends BaseWidget
         return [
             TextColumn::make('product_name')
                 ->label('Nama Produk')
-                ->searchable(),
+                ->searchable(['products.name']),
 
             TextColumn::make('total_quantity')
                 ->label('Jumlah Terjual')

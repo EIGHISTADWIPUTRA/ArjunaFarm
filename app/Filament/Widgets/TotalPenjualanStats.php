@@ -10,18 +10,26 @@ class TotalPenjualanStats extends BaseWidget
 {
     protected function getCards(): array
     {
-        // 1. Hitung total penjualan dari model Transaction
+        // Hitung total seluruh penjualan
         $totalPenjualan = Transaction::sum('total_amount');
-
-        // 2. Format angka menjadi format Rupiah
         $formattedTotal = 'Rp ' . number_format($totalPenjualan, 0, ',', '.');
 
-        // 3. Kembalikan dalam bentuk Card
+        // Hitung total penjualan bulan ini
+        $totalBulanIni = Transaction::query()
+            ->whereYear('created_at', now()->year)
+            ->whereMonth('created_at', now()->month)
+            ->sum('total_amount');
+        $formattedBulanIni = 'Rp ' . number_format($totalBulanIni, 0, ',', '.');
+
+        // Kembalikan DUA kartu dalam satu array
         return [
             Card::make('Total Seluruh Penjualan', $formattedTotal)
                 ->description('Akumulasi dari semua transaksi')
-                ->descriptionIcon('heroicon-s-cash')
                 ->color('success'),
+
+            Card::make('Total Penjualan Bulan Ini', $formattedBulanIni)
+                ->description('Pendapatan di bulan ' . now()->format('F'))
+                ->color('primary'),
         ];
     }
 }

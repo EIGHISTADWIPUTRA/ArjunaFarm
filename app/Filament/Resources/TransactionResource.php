@@ -71,7 +71,7 @@ class TransactionResource extends Resource
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->label('Created')
-                    ->dateTime('d M Y, H:i') // ✅ Gunakan ini di v2
+                    ->dateTime('d M Y, H:i')
                     ->sortable(),
             ])
             ->actions([

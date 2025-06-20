@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\TransactionResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Resources\Table; // ✅ ini benar
+use Filament\Resources\Table; 
 use Filament\Tables\Columns\TextColumn;
 
 class DetailsRelationManager extends RelationManager

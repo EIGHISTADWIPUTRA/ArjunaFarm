@@ -14,6 +14,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Actions\DeleteBulkAction;
 
 class ProductResource extends Resource
 {
@@ -42,12 +43,12 @@ class ProductResource extends Resource
                     ->prefix('Rp'),
                 FileUpload::make('image')
                     ->label('Image')
-                    ->image() // Membatasi hanya gambar
-                    ->directory('products') // Menyimpan gambar di dalam folder 'products'
-                    ->disk('public') // Menyimpan di disk 'public'
-                    ->preserveFilenames() // Menyimpan dengan nama asli
-                    ->maxSize(2048) // Ukuran maksimal file dalam KB
-                    ->visibility('public') // Menyimpan file dengan visibilitas public
+                    ->image()
+                    ->directory('products')
+                    ->disk('public')
+                    ->preserveFilenames()
+                    ->visibility('public')
+                    ->required(), // Pastikan required untuk validasi
             ]);
     }
 
@@ -55,10 +56,11 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('image')
-                    ->label('Image')
-                    ->formatStateUsing(fn ($state) => '<img src="' . asset('storage/' . $state) . '" style="height: 60px; border-radius: 50%;" />')
-                    ->html(),
+                ImageColumn::make('image')
+                    ->disk('public')
+                    ->circular()
+                    ->height(50)
+                    ->width(50),
                 TextColumn::make('name')->searchable()->sortable(),
                 TextColumn::make('description')->limit(50),
                 TextColumn::make('facility')->label('Facility'),
@@ -72,7 +74,7 @@ class ProductResource extends Resource
                     ->label('Created'),
             ])
             ->filters([
-                // Optional: tambahkan filter jika dibutuhkan
+                // Tambahkan filter jika perlu
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -85,9 +87,7 @@ class ProductResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            // Tambahkan relasi jika ada
-        ];
+        return [];
     }
 
     public static function getPages(): array

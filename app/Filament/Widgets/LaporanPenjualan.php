@@ -59,7 +59,7 @@ class LaporanPenjualan extends ChartWidget
 
             case 'daily':
             default:
-                $query->where('created_at', '>=', now()->subDays(30));
+                $query->where('created_at', '>=', now()->subYear());
                 $results = $query->selectRaw('DATE(created_at) as period, SUM(total_amount) as aggregate')
                     ->groupBy('period')
                     ->orderBy('period', 'ASC')

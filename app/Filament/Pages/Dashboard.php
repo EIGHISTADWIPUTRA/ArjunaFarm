@@ -7,6 +7,8 @@ use App\Filament\Widgets\LaporanPenjualanMingguan;
 use App\Filament\Widgets\LaporanPenjualanBulanan;
 use App\Filament\Widgets\TotalPenjualanStats;
 use App\Filament\Widgets\ProdukTerjualWidget;
+use App\Filament\Widgets\DoughnutProduk; 
+
 use Filament\Pages\Dashboard as BaseDashboard;
 
 class Dashboard extends BaseDashboard
@@ -20,9 +22,10 @@ class Dashboard extends BaseDashboard
         return [
             TotalPenjualanStats::class,
             LaporanPenjualan::class,
-            LaporanPenjualanMingguan::class,
-            LaporanPenjualanBulanan::class,
+            // LaporanPenjualanMingguan::class,
+            // LaporanPenjualanBulanan::class,
             ProdukTerjualWidget::class, 
+            DoughnutProduk::class,
         ];
     }
     

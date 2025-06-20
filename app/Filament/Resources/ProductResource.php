@@ -49,7 +49,27 @@ class ProductResource extends Resource
                     ->preserveFilenames()
                     ->visibility('public')
                     ->required(), // Pastikan required untuk validasi
-            ]);
+                Forms\Components\Select::make('type')
+                    ->options([
+                        'perorangan' => 'Perorangan',
+                        'rombongan' => 'Rombongan',
+                    ])
+                    ->required()
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if ($state === 'perorangan') {
+                            $set('min', null); // Reset nilai min jika pilih perorangan
+                        }
+                    }),
+
+                TextInput::make('min')
+                    ->label('Min')
+                    ->numeric()
+                    ->minValue(1)
+                    ->visible(fn ($get) => $get('type') === 'rombongan')
+                    ->required(fn ($get) => $get('type') === 'rombongan'),
+
+                            ]);
     }
 
     public static function table(Table $table): Table

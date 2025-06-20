@@ -14,6 +14,8 @@ class Product extends Model
         'facility',
         'price',
         'image',
+        'type',
+        'min',
     ];
 
     public function transactionDetails()

@@ -14,6 +14,8 @@ class Transaction extends Model
         'phone',
         'email',
         'status',
+        'payment_type',
+        'payment_time',
         'total_amount',
         'token',
         'secure_key',

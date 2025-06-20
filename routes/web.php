@@ -18,7 +18,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('/', HomeController::class);
+Route::resource('/', HomeController::class)->only(['index'])->names([
+    'index' => 'home',
+]);
 
 Route::get('/ticket', [TicketController::class, 'showTickets'])->name('ticket');
 
@@ -37,6 +39,7 @@ Route::post('/transaction-result', [PaymentController::class, 'handleResult'])->
 Route::post('/notification-handler', [PaymentController::class, 'notificationHandler'])->name('payment.notification');
 
 Route::get('/invoice/{id}', [PaymentController::class, 'showInvoice'])->name('invoice.show');
+Route::get('/receipt/{id}/download', [App\Http\Controllers\ReceiptController::class, 'downloadReceipt'])->name('receipt.download');
 
 Route::view('/tentang', 'tentang')->name('tentang');
 

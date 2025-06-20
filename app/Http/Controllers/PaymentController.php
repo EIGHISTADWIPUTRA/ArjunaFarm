@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PaymentReceiptMail;
 use App\Models\Product;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Midtrans\Snap;
 use Midtrans\Notification;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PaymentController extends Controller
 {
@@ -95,8 +99,45 @@ class PaymentController extends Controller
     public function handleResult(Request $request)
     {
         $result = json_decode($request->json_callback, true);
+        
+        // Update transaction status in database
+        $transaction = Transaction::where('order_id', str_replace('AR', '', $result['order_id']))->first();
+        if ($transaction) {
+            $status = $result['transaction_status'];
+            if ($status == 'capture' || $status == 'settlement') {
+                $transaction->status = 'success';
+            } elseif ($status == 'pending') {
+                $transaction->status = 'pending';
+            } elseif ($status == 'deny' || $status == 'failure') {
+                $transaction->status = 'failed';
+            } elseif ($status == 'expire' || $status == 'cancel') {
+                $transaction->status = 'cancelled';
+            }
+            $transaction->payment_type = $result['payment_type'] ?? null;
+            $transaction->payment_time = isset($result['settlement_time']) ? 
+                date('Y-m-d H:i:s', strtotime($result['settlement_time'])) : 
+                date('Y-m-d H:i:s', strtotime($result['transaction_time']));
+            $transaction->save();
+            
+            // Get transaction details
+            $details = DB::table('transaction_details as td')
+                ->select('td.transaction_id', 'p.name', 'p.description', 'p.price', 'td.quantity')
+                ->where('td.transaction_id', $transaction->id)
+                ->join('products as p', 'td.product_id', '=', 'p.id')
+                ->get();
+            
+            // Send email with payment receipt if payment is successful
+            if ($status == 'capture' || $status == 'settlement') {
+                try {
+                    Mail::to($transaction->email)
+                        ->send(new PaymentReceiptMail($transaction, $details, $result));
+                } catch (\Exception $e) {
+                    // Log the error but continue with the response
+                    Log::error('Failed to send payment receipt email: ' . $e->getMessage());
+                }
+            }
+        }
 
-        // Simpan ke database, tampilkan halaman sukses, dll.
         return view('result', ['result' => $result]);
     }
 

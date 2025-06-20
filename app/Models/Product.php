@@ -13,6 +13,11 @@ class Product extends Model
         'description',
         'facility',
         'price',
-        'image_url',
+        'image',
     ];
+
+    public function transactionDetails()
+    {
+        return $this->hasMany(TransactionDetail::class);
+    }
 }

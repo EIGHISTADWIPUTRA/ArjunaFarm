@@ -30,7 +30,12 @@ class PaymentController extends Controller
     public function createTransaction(Request $request)
     {
         $data = new \stdClass();
-        $data->order_id = date('Ymd') . str_pad(Transaction::whereDate('created_at', now()->toDateString())->count() + 1, 3, '0', STR_PAD_LEFT);
+        
+        // Generate a unique random 10-digit order_id
+        do {
+            $data->order_id = (string)mt_rand(1000000000, 9999999999);
+        } while (Transaction::where('order_id', $data->order_id)->exists());
+        
         $data->total = $request->amount;
         $data->name = $request->name;
         $data->phone = $request->phone;

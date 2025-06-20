@@ -29,18 +29,36 @@
                     Cari Tiket
                 </button>
             </form>
+            
+            <div class="flex flex-col gap-2">
+                <label for="type" class="text-sm font-medium text-gray-900 dark:text-white">Tipe</label>
+                <form action="{{ route('ticket') }}" method="GET" class="w-fit">
+                    <select name="type" id="type" onchange="this.form.submit()" class="border border-gray-300 dark:border-gray-700 rounded-md px-3 py-2 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-primary focus:border-primary outline-none">
+                        <option value="" {{ request('type') == '' ? 'selected' : '' }}>Semua</option>
+                        <option value="perorangan" {{ request('type') == 'perorangan' ? 'selected' : '' }}>Perorangan</option>
+                        <option value="rombongan" {{ request('type') == 'rombongan' ? 'selected' : '' }}>Rombongan</option>
+                    </select>
+                </form>
+            </div>
             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">
                 Pilihan Kegiatan
             </h2>
             <div class="flex flex-col gap-2">
-                @foreach ($products as $product)
-                    <x-cart-card 
-                        :id="$product->id"
-                        :name="$product->name"
-                        :description="$product->description"
-                        :price="$product->price"
-                    />
-                @endforeach
+                @php $type = request('type'); @endphp
+                @forelse ($products as $product)
+                    @if (!$type || $product->type === $type)
+                        <x-cart-card 
+                            :id="$product->id"
+                            :name="$product->name"
+                            :description="$product->description"
+                            :price="$product->price"
+                            :type="$product->type"
+                            :min="$product->min"
+                        />
+                    @endif
+                @empty
+                    <div class="text-gray-500 text-sm">Tidak ada produk untuk tipe ini.</div>
+                @endforelse
             </div>
         </div>
 

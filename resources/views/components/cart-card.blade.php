@@ -2,14 +2,42 @@
     'id' => 0,
     'name' => '',
     'description' => '',
-    'price' => 0,  
+    'price' => 0,
+    'type' => '',
+    'min' => null,
 ])
+
+@php
+    $minQty = ($type === 'rombongan' && $min) ? (int)$min : 0;
+@endphp
 
 <div class="cart-card flex flex-col w-full p-2.5 border border-gray-500 rounded-md gap-1.5"
     x-data="{
         id: {{ $id }},
         quantity: 0,
         price: {{ $price }},
+        min: {{ $minQty }},
+        type: '{{ $type }}',
+        increment() {
+            if (this.type === 'rombongan' && this.quantity === 0 && this.min > 0) {
+                this.quantity = this.min;
+            } else {
+                this.quantity++;
+            }
+            this.updateTotal();
+        },
+        decrement() {
+            if (this.type === 'rombongan') {
+                if (this.quantity > this.min) {
+                    this.quantity--;
+                } else if (this.quantity === this.min && this.quantity > 0) {
+                    this.quantity = 0;
+                }
+            } else if (this.quantity > 0) {
+                this.quantity--;
+            }
+            this.updateTotal();
+        },
         updateTotal() {
             $name = '{{ $name }}'.toLowerCase().replace(/\s+/g, '_');
             $dispatch('update-summary', { id: this.id, price: this.price, quantity: this.quantity })
@@ -32,13 +60,13 @@
         </span>
         <div class="flex items-center gap-1">
             <button type="button" class="decrement w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white"
-                @click="if (quantity > 0) quantity--; updateTotal()"
+                @click="decrement()"
             > - </button>
             <span x-text="quantity" class="w-8 text-center text-base font-medium text-gray-900 dark:text-white">
                 0
             </span>
             <button type="button" class="increment w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white"
-                @click="quantity++; updateTotal()"
+                @click="increment()"
             > + </button>
         </div>
     </div>

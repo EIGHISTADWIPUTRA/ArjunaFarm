@@ -133,6 +133,9 @@
                         <img src="{{ asset('images/' . $product->image) }}" alt="Produk" class="object-fill w-full h-[50%] rounded-t-2xl">
                         <div class="flex flex-col p-4 gap-2">
                             <h2 class="text-xl font-bold">{{ $product->name }}</h2>
+                            <span class="inline-block px-2 py-1 text-xs font-semibold bg-primary/10 text-primary rounded">
+                                {{ $product->type }}
+                            </span>
                             <p class="text-gray-600 dark:text-gray-400 h-20 overflow-hidden">{{ $product->description }}</p>
                             <h2 class="text-l font-bold">Rp{{ number_format($product->price, 0, ',', '.') }}</h2>
                         </div>

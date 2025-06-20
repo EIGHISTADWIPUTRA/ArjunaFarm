@@ -14,8 +14,8 @@
     <!-- Navigation Links -->
     <div class="flex items-center gap-8 hidden lg:flex">
         <div class="flex items-center space-x-8">
-            <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
-            <a href="#" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
+            <a href="{{ url('/#content') }}" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Aktivitas</a>
+            <a href="{{ url('/ticket') }}" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Reservasi</a>
             <a href="{{ url('/tentang') }}" class="text-[#707070] hover:text-black dark:hover:text-white transition-all duration-300 ease-in-out">Tentang</a>
         </div>
         @auth

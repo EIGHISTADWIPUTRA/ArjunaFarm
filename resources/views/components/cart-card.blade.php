@@ -51,6 +51,9 @@
     <p class="text-sm text-gray-600 dark:text-gray-400">
         {{ $description }}
     </p>
+    <span class="inline-block px-2 py-1 text-xs font-semibold rounded bg-gray-200 text-gray-700 mb-1 w-fit bg-primary text-gray-900 dark:text-white">
+        {{ ucfirst($type) }}
+    </span>
     <a href="#" class="text-sm text-secondary hover:underline">
         Lihat detail produk
     </a>

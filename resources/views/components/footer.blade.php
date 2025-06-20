@@ -33,9 +33,9 @@
     <!-- Links -->
      <div class="flex gap-20 z-10">
         <ul class="flex flex-col gap-4 lg:gap-8 text-lg font-semibold hidden md:flex">
-            <li><a href="#">Aktivitas</a></li>
-            <li><a href="#">Reservasi</a></li>
-            <li><a href="#">Tentang</a></li>
+            <li><a href="#content">Aktivitas</a></li>
+            <li><a href="{{ route("ticket") }}">Reservasi</a></li>
+            <li><a href="{{ route("tentang") }}">Tentang</a></li>
             <li class="block lg:hidden">
                 <a href="https://wa.me/6282119909719">Hubungi Kami</a>
             </li>

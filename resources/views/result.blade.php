@@ -106,11 +106,6 @@
             @endif
         </div>
     </x-product-card>    <div class="flex justify-between mt-4">
-        <a href="{{ route('receipt.download', ['id' => $transaction->secure_key ?? '']) }}" class="ml-auto mr-2">
-            <x-button xw="w-fit" xh="h-fit" xpx="px-4" xpy="py-2" rounded="rounded-xl" color="primary">
-                Unduh PDF Bukti Pembayaran
-            </x-button>
-        </a>
         
         <x-button xw="w-fit" xh="h-fit" xpx="px-4" xpy="py-2" rounded="rounded-xl" onclick="window.print()">
             Cetak Bukti Pembayaran
